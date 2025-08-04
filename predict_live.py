@@ -38,12 +38,12 @@ while True:
             prediction = model.predict(np.array(data).reshape(1, -1))
             current_letter = prediction[0]
 
-            # عرض الحرف المتوقع
+            
             cv2.putText(image, f'Letter: {current_letter}', (10, 50),
                         cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2)
-            break  # نستخدم يد واحدة فقط
+            break  
 
-    # عرض النص المكتوب حتى الآن
+    
     cv2.putText(image, f'Typed: {typed_text}', (10, 120),
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
 
@@ -51,15 +51,16 @@ while True:
 
     key = cv2.waitKey(1) & 0xFF
 
-    if key == ord('q'):  # للخروج
+    if key == ord('q'):  
         break
-    elif key == ord(' '):  # زر المسطرة -> يسجل الحرف الحالي
+    elif key == ord(' '):  
         if current_letter != "":
             typed_text += current_letter
-    elif key == 8:  # Backspace لمسح آخر حرف
+    elif key == 8:  
         typed_text = typed_text[:-1]
-    elif key == 13:  # Enter لإضافة مسافة بين الأسماء
+    elif key == 13:  
         typed_text += " "
 
 cap.release()
 cv2.destroyAllWindows()
+
