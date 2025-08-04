@@ -11,7 +11,7 @@ labels = []
 
 cap = cv2.VideoCapture(0)
 
-label = input("اكتب الحرف اللي هتسجله: ")
+label = input(": ")
 
 while True:
     ret, frame = cap.read()
@@ -35,7 +35,7 @@ while True:
     cv2.imshow("Recording...", image)
 
     if cv2.waitKey(1) & 0xFF == ord('s'):
-        print("✅ تم حفظ الحركة")
+        print("✅ ")
         break
 
 cap.release()
@@ -45,3 +45,4 @@ df = pd.DataFrame(features)
 df["label"] = labels
 df.to_csv("features.csv", mode='a', index=False, header=not pd.read_csv("features.csv").shape[0] if pd.io.common.file_exists("features.csv") else True)
 ii
+
